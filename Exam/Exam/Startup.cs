@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using System.IO;
 using Exam.Entities;
 using Microsoft.EntityFrameworkCore;
+using Exam.Repositories;
 
 namespace Exam
 {
@@ -27,6 +28,7 @@ namespace Exam
             Configuration = builder.Build();
 
             services.AddDbContext<ExamContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:ExamConnection"]));
+            services.AddScoped<ExamRepository>();
             services.AddMvc();
         }
 
