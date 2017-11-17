@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ namespace Exam.Models
 {
     public class Car
     {
+        [JsonIgnore]
         public int Id { get; set; }
         public string Plate { get; set; }
         public string Car_Brand { get; set; }
