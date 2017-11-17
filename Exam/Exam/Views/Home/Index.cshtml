@@ -1,0 +1,38 @@
+﻿@model List<Exam.Models.Car>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Plate</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Color</th>
+                <th>Year</th>
+            </tr>
+        </thead>
+
+        @foreach (var car in Model)
+        {
+            <tr>
+                <td>@car.Id</td>
+                <td>@car.Plate</td>
+                <td>@car.Car_Brand</td>
+                <td>@car.Car_Model</td>
+                <td>@car.Color</td>
+                <td>@car.Year</td>
+            </tr>
+        }
+    </table>
+
+    <form action="/search" method="get">
+        <input type="text" id="Plate" name="Plate" />
+        <button type="submit">Search</button>
+    </form>
+</body>
+</html>
