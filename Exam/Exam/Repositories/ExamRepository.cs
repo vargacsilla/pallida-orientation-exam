@@ -21,11 +21,19 @@ namespace Exam.Repositories
             return ExamContext.Licence_plates.ToList();
         }
  
-        public List<Car> SearchPlates(string plate)
+        public List<Car> SearchByPlate(string plate)
         {
             var searchedCars = from car in ExamContext.Licence_plates
                           where car.Plate.Contains(plate)
                           select car;
+            return searchedCars.ToList();
+        }
+
+        public List<Car> SearchByBrand(string brand)
+        {
+            var searchedCars = from car in ExamContext.Licence_plates
+                               where car.Car_Brand == brand
+                               select car;
             return searchedCars.ToList();
         }
     }

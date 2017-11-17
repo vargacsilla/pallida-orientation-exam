@@ -25,9 +25,16 @@ namespace Exam.Controllers
 
         [HttpGet]
         [Route("search")]
-        public IActionResult Search(string Plate)
+        public IActionResult SearchByPlate(string Plate)
         {
-            return View("list", ExamRepository.SearchPlates(Plate));
+            return View("list", ExamRepository.SearchByPlate(Plate));
+        }
+
+        [HttpGet]
+        [Route("search/{brand}")]
+        public IActionResult SearchByBrand(string brand)
+        {
+            return View("list", ExamRepository.SearchByBrand(brand));
         }
     }
 }
