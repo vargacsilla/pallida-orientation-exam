@@ -21,12 +21,19 @@ namespace Exam.Controllers
         [Route("search/{brand}")]
         public IActionResult SearchByBrand(string brand)
         {
-            var searchResult = new
+            if (ExamRepository.SearchByBrand(brand).Count == 0)
             {
-                result = "ok",
-                data = ExamRepository.SearchByBrand(brand)
-            };
-            return Json(searchResult);
+                return Json(new { result = "no matches found" });
+            }
+            else
+            {
+                var searchResult = new
+                {
+                    result = "ok",
+                    data = ExamRepository.SearchByBrand(brand)
+                };
+                return Json(searchResult);
+            }
         }
     }
 }
