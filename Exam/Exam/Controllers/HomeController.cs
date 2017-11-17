@@ -33,8 +33,6 @@ namespace Exam.Controllers
         [Route("search{diplomat}")]
         public IActionResult SearchByPlate(string plate, int police, int diplomat)
         {
-            var plateFormat = new Regex(@"[0-9a-zA-Z-]{1,7}");
-
             if (police == 1)
             {
                 return View("list", ExamRepository.ListSpecialPlatedCars(policePlate));
@@ -44,13 +42,14 @@ namespace Exam.Controllers
             {
                 return View("list", ExamRepository.ListSpecialPlatedCars(diplomatPlate));
             }
+
             if (plate.Length > 0 && plate.Length <= 7)
             {
                 return View("list", ExamRepository.SearchByPlate(plate));
             }
             else
             {
-                return Json(new { errorMessage = "Sorry, the submitted licence plate is not valid." });
+                return Content("Sorry, the submitted licence plate is not valid.");
             }
         }
 

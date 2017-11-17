@@ -5,35 +5,35 @@
     <title></title>
 </head>
 <body>
-    <form action="/search" method="get">
-        <input type="text" id="plate" name="plate" />
-        <button type="submit">Search</button>
-    </form>
-    <a href="/">[All cars]</a>
-    <a href="/search?police=1">[Police cars]</a>
-    <a href="/search?diplomat=1">[Diplomat cars]</a>
-    <p></p>
-    <table>
-        <thead>
-            <tr>
-                <th>Plate</th>
-                <th>Brand</th>
-                <th>Model</th>
-                <th>Color</th>
-                <th>Year</th>
-            </tr>
-        </thead>
+        <form action="/search" method="get">
+            <input type="text" id="plate" name="plate" />
+            <button type="submit">Search</button>
+        </form>
+        <a href="/">[All cars]</a>
+        <a href="/search?police=1">[Police cars]</a>
+        <a href="/search?diplomat=1">[Diplomat cars]</a>
+        <p></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Plate</th>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Color</th>
+                    <th>Year</th>
+                </tr>
+            </thead>
 
-        @foreach (var car in Model)
-        {
-            <tr>
-                <td>@car.Plate</td>
-                <td><a href="/search/@car.Car_Brand">@car.Car_Brand</a></td>
-                <td>@car.Car_Model</td>
-                <td>@car.Color</td>
-                <td>@car.Year</td>
-            </tr>
-        }
-    </table>
+            @foreach (var car in Model)
+            {
+                <tr>
+                    <td>@car.Plate</td>
+                    <td><a href="/search/@car.Car_Brand">@car.Car_Brand</a></td>
+                    <td>@car.Car_Model</td>
+                    <td>@car.Color</td>
+                    <td>@car.Year</td>
+                </tr>
+            }
+        </table>
 </body>
 </html>
