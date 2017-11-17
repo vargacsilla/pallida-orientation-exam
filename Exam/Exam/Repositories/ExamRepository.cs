@@ -36,5 +36,13 @@ namespace Exam.Repositories
                                select car;
             return searchedCars.ToList();
         }
+
+        public List<Car> ListSpecialPlatedCars(string input)
+        {
+            var searchedCars = from car in ExamContext.Licence_plates
+                               where car.Plate.StartsWith(input)
+                               select car;
+            return searchedCars.ToList();
+        }
     }
 }

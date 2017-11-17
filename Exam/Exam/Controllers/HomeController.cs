@@ -10,6 +10,8 @@ namespace Exam.Controllers
     public class HomeController : Controller
     {
         ExamRepository ExamRepository;
+        private string policePlate = "RB";
+        private string diplomatPlate = "DT";
 
         public HomeController(ExamRepository examRepository)
         {
@@ -25,9 +27,23 @@ namespace Exam.Controllers
 
         [HttpGet]
         [Route("search")]
-        public IActionResult SearchByPlate(string Plate)
+        [Route("search{plate}")]
+        [Route("search{police}")]
+        public IActionResult SearchByPlate(string plate, int police, int diplomat)
         {
-            return View("list", ExamRepository.SearchByPlate(Plate));
+            if (police == 1)
+            {
+                return View("list", ExamRepository.ListSpecialPlatedCars(policePlate));
+            }
+            if (diplomat == 1)
+            {
+                return View("list", ExamRepository.ListSpecialPlatedCars(diplomatPlate));
+            }
+            if (plate.Length > 0)
+            {
+                return View("list", ExamRepository.SearchByPlate(plate));
+            }
+            return Json(new { errorMessage = "Please povide input" });
         }
 
         [HttpGet]
